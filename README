@@ -1,0 +1,30 @@
+<?php
+  
+ $dbconn = pg_connect("host=ec2-54-227-239-195.compute-1.amazonaws.com port=5432 dbname=da2p912vb9fik7 user=ldsxwrozhlwcgq password=PVIK-XekrLIxFh1WB39sQLx7Es sslmode=require options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
+ $db = mysql_select_db("da2p912vb9fik7",$dbconn);
+
+?>
+
+<?php
+
+$pickup = $_POST['ptime'];
+$weight = $_POST['wparcel'];
+
+    $sql1 = "CREATE TABLE info1(pickup datetime NOT NULL,weight varchar(15))";
+    $qury1 = mysql_query($sql1);
+
+    $sql = "INSERT into info1 values('$pickup','$weight')";
+    $qury = mysql_query($sql);
+
+    if(!$qury)
+       echo mysql_error();
+    else
+       echo "<html>";
+       echo "<head>";
+       echo "<title>India Post Online Package Delivery System</title>";
+       echo "<body><center><font size='5'color='red'><h1>INDIAN POST ONLINE PACKAGE DELIVERY SYSTEM</h1></font>";
+       echo "<a href='http://dry-garden-3446.herokuapp.com/'><center ><font size='4' color='blue'><h1>Clik here to move to Confirmation page</h1></a>";
+       echo "</body>";
+       echo "</head>";
+       echo "</html>";     
+?>
